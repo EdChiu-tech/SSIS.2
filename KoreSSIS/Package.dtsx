@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="109"
-  DTS:VersionGUID="{00FD1744-219A-4A74-B4ED-C19AEDF511B8}">
+  DTS:VersionBuild="139"
+  DTS:VersionGUID="{A6898D47-3CEA-4872-AD2D-8CF2DD398293}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -120,7 +120,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="UserID"
-              DTS:DTSID="{8BCCC81C-BB96-4D1C-AE0B-AB154E33B6CE}"
+              DTS:DTSID="{FC554314-103E-434C-A09C-8FFA12ABB8D5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -129,7 +129,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="FullName"
-              DTS:DTSID="{8A81154F-B415-43E6-8589-56D9EC7D0515}"
+              DTS:DTSID="{59FFBD93-31B7-4C14-BB89-14B318240D95}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -138,7 +138,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Age"
-              DTS:DTSID="{7C123D06-FF28-427E-9490-6DBDC3C3C9A5}"
+              DTS:DTSID="{EA62FEA9-2652-4303-99F9-EA60B6649353}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -147,7 +147,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Email"
-              DTS:DTSID="{78B832D5-F0A5-4FD8-8AED-68A75D56DB9F}"
+              DTS:DTSID="{A2DBCBFF-CC2A-4699-991F-F51D9E42A50F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -156,7 +156,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="RegistrationDate"
-              DTS:DTSID="{98F4C879-5C9D-44D6-9F23-C680FDDC334C}"
+              DTS:DTSID="{8D757C00-3D99-4603-A51C-A48EF62A7D04}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -165,7 +165,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="LastLoginDate"
-              DTS:DTSID="{DFCE21AF-E1B6-48F9-8335-345DB15BFB2A}"
+              DTS:DTSID="{BFAA4798-0C3B-4317-8856-247AD785911E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -174,7 +174,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PurchaseTotal"
-              DTS:DTSID="{FBE09749-94B2-47F4-937A-6A9863AE04A6}"
+              DTS:DTSID="{0CCBE61D-115B-4AD4-A5EE-90506E5D67B2}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -1411,11 +1411,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Merge Clean data to Production\Clean Staging table source"
+              refId="Package\Merge Clean data to Production\Cleaned Staging table source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="Clean Staging table source"
+              name="Cleaned Staging table source"
               usesDispositions="true"
               version="7">
               <properties>
@@ -1460,7 +1460,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Merge Clean data to Production\Clean Staging table source.Connections[OleDbConnection]"
+                  refId="Package\Merge Clean data to Production\Cleaned Staging table source.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.KoreAssignment_{Edward_Chiu\}]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.KoreAssignment_{Edward_Chiu\}]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1468,179 +1468,273 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output]"
+                  refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[StgID]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[StgID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[StgID]"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[StgID]"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[StgID]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[StgID]"
                       name="StgID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[UserID]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[UserID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[UserID]"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[UserID]"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[UserID]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[UserID]"
                       name="UserID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[FullName]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[FullName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
                       length="255"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[FullName]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[FullName]"
                       name="FullName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[Age]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[Age]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[Age]"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[Age]"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[Age]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[Age]"
                       name="Age"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[Email]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[Email]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
                       length="255"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[Email]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[Email]"
                       name="Email"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[RegistrationDate]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[RegistrationDate]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[RegistrationDate]"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[RegistrationDate]"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[RegistrationDate]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[RegistrationDate]"
                       name="RegistrationDate"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[LastLoginDate]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[LastLoginDate]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[LastLoginDate]"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[LastLoginDate]"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[LastLoginDate]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[LastLoginDate]"
                       name="LastLoginDate"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[PurchaseTotal]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[PurchaseTotal]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[PurchaseTotal]"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[PurchaseTotal]"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[PurchaseTotal]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[PurchaseTotal]"
                       name="PurchaseTotal"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[StgID]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[StgID]"
                       dataType="i4"
                       name="StgID" />
                     <externalMetadataColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[UserID]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[UserID]"
                       dataType="i4"
                       name="UserID" />
                     <externalMetadataColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
                       dataType="wstr"
                       length="255"
                       name="FullName" />
                     <externalMetadataColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[Age]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[Age]"
                       dataType="i4"
                       name="Age" />
                     <externalMetadataColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
                       dataType="wstr"
                       length="255"
                       name="Email" />
                     <externalMetadataColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[RegistrationDate]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[RegistrationDate]"
                       dataType="dbDate"
                       name="RegistrationDate" />
                     <externalMetadataColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[LastLoginDate]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[LastLoginDate]"
                       dataType="dbDate"
                       name="LastLoginDate" />
                     <externalMetadataColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].ExternalColumns[PurchaseTotal]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].ExternalColumns[PurchaseTotal]"
                       dataType="r8"
                       name="PurchaseTotal" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[StgID]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[StgID]"
                       dataType="i4"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[StgID]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[StgID]"
                       name="StgID" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[UserID]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[UserID]"
                       dataType="i4"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[UserID]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[UserID]"
                       name="UserID" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[FullName]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[FullName]"
                       name="FullName" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[Age]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[Age]"
                       dataType="i4"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[Age]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[Age]"
                       name="Age" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[Email]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[Email]"
                       name="Email" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[RegistrationDate]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[RegistrationDate]"
                       dataType="dbDate"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[RegistrationDate]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[RegistrationDate]"
                       name="RegistrationDate" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[LastLoginDate]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[LastLoginDate]"
                       dataType="dbDate"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[LastLoginDate]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[LastLoginDate]"
                       name="LastLoginDate" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[PurchaseTotal]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[PurchaseTotal]"
                       dataType="r8"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[PurchaseTotal]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[PurchaseTotal]"
                       name="PurchaseTotal" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Merge Clean data to Production\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Merge Clean data to Production\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\Conditional Split.Inputs[Conditional Split Input].Columns[LastLoginDate]"
+                      cachedDataType="dbDate"
+                      cachedName="LastLoginDate"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[LastLoginDate]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\Conditional Split.Inputs[Conditional Split Input].Columns[prodLastLoginDate]"
+                      cachedDataType="dbDate"
+                      cachedName="prodLastLoginDate"
+                      lineageId="Package\Merge Clean data to Production\Lookup.Outputs[Lookup Match Output].Columns[prodLastLoginDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Merge Clean data to Production\Conditional Split.Outputs[stgLLDatetoProdLLDateCheck]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="stgLLDatetoProdLLDateCheck"
+                  synchronousInputId="Package\Merge Clean data to Production\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Merge Clean data to Production\Lookup.Outputs[Lookup Match Output].Columns[prodLastLoginDate]}) || #{Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[LastLoginDate]} &gt; #{Package\Merge Clean data to Production\Lookup.Outputs[Lookup Match Output].Columns[prodLastLoginDate]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(prodLastLoginDate) || LastLoginDate &gt; prodLastLoginDate</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Merge Clean data to Production\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Merge Clean data to Production\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Merge Clean data to Production\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Merge Clean data to Production\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Merge Clean data to Production\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Merge Clean data to Production\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Merge Clean data to Production\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Merge Clean data to Production\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1669,7 +1763,7 @@
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [prod].[Users]) [refTable]
-where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
+where [refTable].[UserID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -1705,7 +1799,7 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[UserID]};#{Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[LastLoginDate]};</property>
+                  name="ParameterMap">#{Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[UserID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1732,28 +1826,12 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
                       refId="Package\Merge Clean data to Production\Lookup.Inputs[Lookup Input].Columns[UserID]"
                       cachedDataType="i4"
                       cachedName="UserID"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[UserID]">
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[UserID]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">UserID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Merge Clean data to Production\Lookup.Inputs[Lookup Input].Columns[LastLoginDate]"
-                      cachedDataType="dbDate"
-                      cachedName="LastLoginDate"
-                      lineageId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output].Columns[LastLoginDate]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">LastLoginDate</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -1771,6 +1849,22 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Merge Clean data to Production\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Merge Clean data to Production\Lookup.Outputs[Lookup Match Output].Columns[prodLastLoginDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Merge Clean data to Production\Lookup.Outputs[Lookup Match Output].Columns[prodLastLoginDate]"
+                      name="prodLastLoginDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">LastLoginDate</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -1806,6 +1900,215 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Merge Clean data to Production\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE prod.Users
+SET
+FullName = ?,
+Age = ?,
+Email = ?,
+RegistrationDate = ?,
+LastLoginDate = ?,
+PurchaseTotal = ?
+WHERE UserID = ?;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Merge Clean data to Production\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.KoreAssignment_{Edward_Chiu\}]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.KoreAssignment_{Edward_Chiu\}]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].Columns[Age]"
+                      cachedDataType="i4"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[Age]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].Columns[RegistrationDate]"
+                      cachedDataType="dbDate"
+                      cachedName="RegistrationDate"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[RegistrationDate]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].Columns[LastLoginDate]"
+                      cachedDataType="dbDate"
+                      cachedName="LastLoginDate"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[LastLoginDate]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].Columns[PurchaseTotal]"
+                      cachedDataType="r8"
+                      cachedName="PurchaseTotal"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[PurchaseTotal]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].Columns[UserID]"
+                      cachedDataType="i4"
+                      cachedName="UserID"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[UserID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="dbDate"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="dbDate"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="r8"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Merge Clean data to Production\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Merge Clean data to Production\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Merge Clean data to Production\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Merge Clean data to Production\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Merge Clean data to Production\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -1821,7 +2124,7 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[prod].[Users]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1843,7 +2146,7 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -1855,7 +2158,7 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -1864,6 +2167,8 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
               <connections>
                 <connection
                   refId="Package\Merge Clean data to Production\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.KoreAssignment_{Edward_Chiu\}]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.KoreAssignment_{Edward_Chiu\}]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1874,8 +2179,93 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[UserID]"
+                      cachedDataType="i4"
+                      cachedName="UserID"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UserID]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[UserID]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Age]"
+                      cachedDataType="i4"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[Age]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RegistrationDate]"
+                      cachedDataType="dbDate"
+                      cachedName="RegistrationDate"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[RegistrationDate]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LastLoginDate]"
+                      cachedDataType="dbDate"
+                      cachedName="LastLoginDate"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastLoginDate]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[LastLoginDate]" />
+                    <inputColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PurchaseTotal]"
+                      cachedDataType="r8"
+                      cachedName="PurchaseTotal"
+                      externalMetadataColumnId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PurchaseTotal]"
+                      lineageId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output].Columns[PurchaseTotal]" />
+                  </inputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UserID]"
+                      dataType="i4"
+                      name="UserID" />
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="255"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      dataType="i4"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
+                      dataType="dbDate"
+                      name="RegistrationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastLoginDate]"
+                      dataType="dbDate"
+                      name="LastLoginDate" />
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PurchaseTotal]"
+                      dataType="r8"
+                      name="PurchaseTotal" />
+                    <externalMetadataColumn
+                      refId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RecordLastUpdated]"
+                      dataType="dbTimeStamp"
+                      name="RecordLastUpdated" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
@@ -1906,6 +2296,11 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
           </components>
           <paths>
             <path
+              refId="Package\Merge Clean data to Production.Paths[Lookup Match Output]"
+              endId="Package\Merge Clean data to Production\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Merge Clean data to Production\Lookup.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\Merge Clean data to Production.Paths[Lookup No Match Output]"
               endId="Package\Merge Clean data to Production\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
@@ -1914,7 +2309,12 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
               refId="Package\Merge Clean data to Production.Paths[OLE DB Source Output]"
               endId="Package\Merge Clean data to Production\Lookup.Inputs[Lookup Input]"
               name="OLE DB Source Output"
-              startId="Package\Merge Clean data to Production\Clean Staging table source.Outputs[OLE DB Source Output]" />
+              startId="Package\Merge Clean data to Production\Cleaned Staging table source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Merge Clean data to Production.Paths[stgLLDatetoProdLLDateCheck]"
+              endId="Package\Merge Clean data to Production\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="stgLLDatetoProdLLDateCheck"
+              startId="Package\Merge Clean data to Production\Conditional Split.Outputs[stgLLDatetoProdLLDateCheck]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1955,7 +2355,7 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DB712BAE-4FBA-479E-88E0-CA36374D4141}"
-          SQLTask:SqlStatementSource="DELETE FROM stg.Users&#xA;WHERE StgID NOT IN (&#xA;&#x9;SELECT StgID&#xA;&#x9;FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;StgID,&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY UserID ORDER BY&#xA;&#x9;&#x9;&#x9;&#x9;GREATEST(COALESCE(RegistrationDate, '1900-01-01'), COALESCE(LastLoginDate, '1900-01-01')) DESC) AS rn&#xA;&#x9;&#x9;&#x9;FROM stg.Users&#xA;&#x9;&#x9;) AS MostRecentUser&#xA;&#x9;WHERE rn = 1&#xA;);&#xA;&#xA;SELECT COUNT(*) AS RemoveDupeUserIDRowCount FROM stg.Users;"
+          SQLTask:SqlStatementSource="DELETE FROM stg.Users&#xA;WHERE StgID NOT IN (&#xA;&#x9;SELECT StgID&#xA;&#x9;FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;StgID,&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY UserID ORDER BY&#xA;&#x9;&#x9;&#x9;&#x9;GREATEST(COALESCE(RegistrationDate, '1900-01-01'), COALESCE(LastLoginDate, '1900-01-01')) DESC) AS rn&#xA;&#x9;&#x9;&#x9;FROM stg.Users&#xA;&#x9;&#x9;&#x9;WHERE COALESCE(LastLoginDate, '1900-01-01') &gt;= COALESCE(RegistrationDate, '1900-01-01')&#xA;&#x9;&#x9;) AS MostRecentUser&#xA;&#x9;WHERE rn = 1&#xA;);&#xA;&#xA;SELECT COUNT(*) AS RemoveDupeUserIDRowCount FROM stg.Users;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="RemoveDupeUserIDRowCount"
@@ -2094,21 +2494,21 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
         <NodeLayout
           Size="210,42"
           Id="Package\Remove duplicate UserIDs"
-          TopLeft="213,324" />
+          TopLeft="212,337" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="319.5,270">
+          TopLeft="319,270">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,54"
+              EndConnector="0,67"
               Start="0,0"
-              End="0,46.5">
+              End="0,59.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.5" />
+                    End="0,59.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2123,18 +2523,18 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
           TopLeft="232,455" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="321.25,366">
+          TopLeft="320.75,379">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,89"
+              EndConnector="0,76"
               Start="0,0"
-              End="0,81.5">
+              End="0,68.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,81.5" />
+                    End="0,68.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2261,7 +2661,9 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-8,8.25,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
@@ -2325,7 +2727,9 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-65.5,36.5,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
@@ -2390,7 +2794,7 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="30.91361328125,40.3136531365314,132.1727734375,11.43359375"
+              BoundingBox="22.0449609375,40.3136531365314,149.910078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2414,86 +2818,156 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
     design-time-name="Package\Merge Clean data to Production">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="211,42"
-          Id="Package\Merge Clean data to Production\Clean Staging table source"
+          Size="223,42"
+          Id="Package\Merge Clean data to Production\Cleaned Staging table source"
           TopLeft="175,135" />
         <NodeLayout
           Size="115,42"
           Id="Package\Merge Clean data to Production\Lookup"
-          TopLeft="236,262" />
+          TopLeft="233,243" />
         <EdgeLayout
           Id="Package\Merge Clean data to Production.Paths[OLE DB Source Output]"
-          TopLeft="280.5,177">
+          TopLeft="288.5,177">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="13,85"
+              EndConnector="0,66"
               Start="0,0"
-              End="13,77.5">
+              End="0,58.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.5"
-                    Point2="0,42.5"
-                    Point3="4,42.5" />
-                  <mssgle:LineSegment
-                    End="9,42.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="9,42.5"
-                    Point2="13,42.5"
-                    Point3="13,46.5" />
-                  <mssgle:LineSegment
-                    End="13,77.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Merge Clean data to Production\OLE DB Destination"
-          TopLeft="122,408" />
-        <EdgeLayout
-          Id="Package\Merge Clean data to Production.Paths[Lookup No Match Output]"
-          TopLeft="293.5,304">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-83,104"
-              Start="0,0"
-              End="-83,96.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,48"
-                    Point2="0,52"
-                    Point3="-4,52" />
-                  <mssgle:LineSegment
-                    End="-79,52" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-79,52"
-                    Point2="-83,52"
-                    Point3="-83,56" />
-                  <mssgle:LineSegment
-                    End="-83,96.5" />
+                    End="0,58.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-97.30638671875,57,111.6127734375,11.609375"
+              BoundingBox="-8,21.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Merge Clean data to Production\OLE DB Destination"
+          TopLeft="71,382" />
+        <EdgeLayout
+          Id="Package\Merge Clean data to Production.Paths[Lookup No Match Output]"
+          TopLeft="272.666666666667,285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-113.166666666667,97"
+              Start="0,0"
+              End="-113.166666666667,89.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.598627787307" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.598627787307"
+                    Point2="0,39.598627787307"
+                    Point3="-4,39.598627787307" />
+                  <mssgle:LineSegment
+                    End="-109.166666666667,39.598627787307" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-109.166666666667,39.598627787307"
+                    Point2="-113.166666666667,39.598627787307"
+                    Point3="-113.166666666667,43.598627787307" />
+                  <mssgle:LineSegment
+                    End="-113.166666666667,89.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-112.389720052083,44.598627787307,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Merge Clean data to Production\OLE DB Command"
+          TopLeft="640,510" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Merge Clean data to Production\Conditional Split"
+          TopLeft="449,396" />
+        <EdgeLayout
+          Id="Package\Merge Clean data to Production.Paths[Lookup Match Output]"
+          TopLeft="308.333333333333,285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="220.166666666667,111"
+              Start="0,0"
+              End="220.166666666667,103.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.3138936535163" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.3138936535163"
+                    Point2="0,45.3138936535163"
+                    Point3="4,45.3138936535163" />
+                  <mssgle:LineSegment
+                    End="216.166666666667,45.3138936535163" />
+                  <mssgle:CubicBezierSegment
+                    Point1="216.166666666667,45.3138936535163"
+                    Point2="220.166666666667,45.3138936535163"
+                    Point3="220.166666666667,49.3138936535163" />
+                  <mssgle:LineSegment
+                    End="220.166666666667,103.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="61.8919466145833,50.3138936535163,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Merge Clean data to Production.Paths[stgLLDatetoProdLLDateCheck]"
+          TopLeft="528.5,438">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="198,72"
+              Start="0,0"
+              End="198,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32"
+                    Point2="0,36"
+                    Point3="4,36" />
+                  <mssgle:LineSegment
+                    End="194,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="194,36"
+                    Point2="198,36"
+                    Point3="198,40" />
+                  <mssgle:LineSegment
+                    End="198,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.16580078125,41,131.6683984375,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2501,7 +2975,7 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Merge Clean data to Production\Clean Staging table source">
+    design-time-name="Package\Merge Clean data to Production\Cleaned Staging table source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2533,6 +3007,19 @@ where [refTable].[UserID] = ? and [refTable].[LastLoginDate] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Merge Clean data to Production\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
