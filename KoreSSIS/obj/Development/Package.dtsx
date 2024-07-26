@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="78"
-  DTS:VersionGUID="{A7F26F3C-7F4B-4AF7-9B2F-0DFECB576C49}">
+  DTS:VersionBuild="97"
+  DTS:VersionGUID="{4E17C354-F011-46CF-9DAB-E89F5A1877D7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -209,6 +209,24 @@
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="RowCountDataConvPass">
+      <DTS:VariableValue
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BA0EF6C5-C4E9-4CDE-BF68-946875143E8A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCountRemoveDuplicate">
+      <DTS:VariableValue
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{76599B12-CAAD-4593-A772-ABFC26A9A085}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCountRemoveInvalidUserID">
       <DTS:VariableValue
         DTS:DataType="3">-1</DTS:VariableValue>
     </DTS:Variable>
@@ -1360,7 +1378,68 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Remove duplicate UserIDs"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{32d34487-3267-41bc-8bcf-e794b7f3de67}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Remove duplicate UserIDs"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DB712BAE-4FBA-479E-88E0-CA36374D4141}"
+          SQLTask:SqlStatementSource="DELETE FROM stg.Users&#xA;WHERE StgID NOT IN (&#xA;&#x9;SELECT StgID&#xA;&#x9;FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;StgID,&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY UserID ORDER BY&#xA;&#x9;&#x9;&#x9;&#x9;GREATEST(COALESCE(RegistrationDate, '1900-01-01'), COALESCE(LastLoginDate, '1900-01-01')) DESC) AS rn&#xA;&#x9;&#x9;&#x9;FROM stg.Users&#xA;&#x9;&#x9;) AS MostRecentUser&#xA;&#x9;WHERE rn = 1&#xA;);&#xA;&#xA;SELECT COUNT(*) AS RemoveDupeUserIDRowCount FROM stg.Users;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="RemoveDupeUserIDRowCount"
+            SQLTask:DtsVariableName="User::RowCountRemoveDuplicate" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Remove Invalid UserID"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{5deeed73-4fd9-41be-a5ec-13267ca2283e}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Remove Invalid UserID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DB712BAE-4FBA-479E-88E0-CA36374D4141}"
+          SQLTask:SqlStatementSource="DELETE FROM stg.Users&#xA;WHERE UserID IS NULL;&#xA;&#xA;SELECT COUNT(*) AS RemovedInvalidUserIDRC&#xA;FROM stg.Users;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="RemovedInvalidUserIDRC"
+            SQLTask:DtsVariableName="User::RowCountRemoveInvalidUserID" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{58197707-40CB-4851-8F3B-298F37C0649E}"
+      DTS:From="Package\Extract and convert data type"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Remove Invalid UserID" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{09B368DE-3F0F-4DDE-AA1C-BBC336CE897F}"
+      DTS:From="Package\Remove Invalid UserID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Remove duplicate UserIDs" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -1372,11 +1451,63 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="222,42"
           Id="Package\Extract and convert data type"
           TopLeft="212,127" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Remove Invalid UserID"
+          TopLeft="225,228" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="322,169">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Remove duplicate UserIDs"
+          TopLeft="213,324" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="319.5,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
