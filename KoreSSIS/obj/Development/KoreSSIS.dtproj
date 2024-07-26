@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-TKTF26L</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA12LLPbnxZEqRbJdA0mvlyQAAAAACAAAAAAAQZgAAAAEAACAAAADA7TCWCVGBTyyX5DrDoaFx/iJMIDWFC+z5BkJw+t9EwgAAAAAOgAAAAAIAACAAAADq8V/AeUHNahu1jf5PkIzU8sNkrqe7ysEHNACwZ/YpN5AAAAAvGa/c8J/jRjViCPRgolEAvZ6HPYuQYnRSSLxe0DKbPr3cCyPFHAzl7rM72NArXggHkLZskUTbq1HmgFcSoofcI+f0iy2OBO9z2zeJCLtF5ruRwoIDlZ8+qJNPpqd9TSxswbM61NSG+3EnxANriawIQ1ayy8iaKNDq3GolBvIf8bLUpNopa6Sfjh58OtIFD3hAAAAA509ujdSA72N/p8628oyNpclEb2CkZRbWysqSidPN9WtYf+PARrPnGDG+rkCxrfjH/Kw01bOQL4XXHoFY0mZ59w==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA12LLPbnxZEqRbJdA0mvlyQAAAAACAAAAAAAQZgAAAAEAACAAAADh3tmMU7Tc1WsBtewq3KaIUVDQs5DO3Pve7/0Vcf3d4AAAAAAOgAAAAAIAACAAAADa7sRvt4CtCEBel666aZbMOWP8YCnXxtokZ697g//UVpAAAACuPfuH+9hyHZodaJGjsSoQI0hmXXSBSLPO7MTMX06+AcZrUNU79OR0EjM5Hk+l4fs/MhsTzcFPSRbxCpDpq/isuAj/llKpK9f+Lu8IUE5g98ijWXocllC1usPjKLYR6HMsWgNpIcb1oL890qiC34cRGUl7FDiUgQJv+G7NqKOAUZroZCd4nHlq5n5L5RFr8SxAAAAAWAlj1Z00ajXrV3kTt1bEDXhYVqWqYPC6Pa7nuTsOkezuUNSqm17ZNqaDrzSmAQRAwuzGA+9cTjqaYePzBZGF/w==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -214,6 +214,8 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -409,6 +411,8 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
