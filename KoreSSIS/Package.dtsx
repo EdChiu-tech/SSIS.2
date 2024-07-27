@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="225"
-  DTS:VersionGUID="{C1675527-C681-4009-8640-29D433F09C25}">
+  DTS:VersionBuild="226"
+  DTS:VersionGUID="{3B84F2D3-D23C-4D62-BA8F-7D2C0066DD31}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -5009,7 +5009,7 @@ WHERE UserID = ?;</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DB712BAE-4FBA-479E-88E0-CA36374D4141}"
-          SQLTask:SqlStatementSource="TRUNCATE stg.Users" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE stg.Users" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
