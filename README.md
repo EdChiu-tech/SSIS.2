@@ -33,3 +33,9 @@ The rows in the RejectedRows table and the Production table are now counted to g
 
 STEP EIGHT - Truncate Staging Table
 After the final ETL procedure is complete, the staging table is truncated to relief storage space from the database.
+
+FINAL ROW COUNT
+Rejected Rows: 9
+New Rows Added to Production: 23
+Updated Rows: 0
+Total Rows in Production: 33
