@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="226"
-  DTS:VersionGUID="{3B84F2D3-D23C-4D62-BA8F-7D2C0066DD31}">
+  DTS:VersionBuild="228"
+  DTS:VersionGUID="{6F05C792-DD7E-4BA4-A47B-13E9F43F4C6F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2698,11 +2698,11 @@
                       refId="Package\Final Row Count Logging\Rejected Rows Total Count.Outputs[OLE DB Source Output].Columns[ID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="RedirectRow"
                       externalMetadataColumnId="Package\Final Row Count Logging\Rejected Rows Total Count.Outputs[OLE DB Source Output].ExternalColumns[ID]"
                       lineageId="Package\Final Row Count Logging\Rejected Rows Total Count.Outputs[OLE DB Source Output].Columns[ID]"
                       name="ID"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="RedirectRow" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2784,6 +2784,181 @@
               </outputs>
             </component>
             <component
+              refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Audit"
+              componentClassID="Microsoft.Lineage"
+              contactInfo="Audit;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Includes data about the environment in which the package runs. Map system variables to new output columns. For example, add the name of the computer and operator to the data flow."
+              name="Rejected Rows Total Count Error Audit">
+              <inputs>
+                <input
+                  refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Audit.Inputs[Audit Input 1]"
+                  name="Audit Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Audit.Outputs[Audit Output 1]"
+                  exclusionGroup="1"
+                  name="Audit Output 1"
+                  synchronousInputId="Package\Final Row Count Logging\Rejected Rows Total Count Error Audit.Inputs[Audit Input 1]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Audit.Outputs[Audit Output 1].Columns[Task name]"
+                      dataType="wstr"
+                      length="64"
+                      lineageId="Package\Final Row Count Logging\Rejected Rows Total Count Error Audit.Outputs[Audit Output 1].Columns[Task name]"
+                      name="Task name">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies which audit item this column produces."
+                          name="LineageItemSelected"
+                          typeConverter="LineageItemSelected">7</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Rejected Rows Total Count Error Logging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ErrorLog]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.KoreAssignment_{Edward_Chiu\}]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.KoreAssignment_{Edward_Chiu\}]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Final Row Count Logging\Rejected Rows Total Count.Outputs[OLE DB Source Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Final Row Count Logging\Rejected Rows Total Count.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input].Columns[Task name]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="Task name"
+                      externalMetadataColumnId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[TaskName]"
+                      lineageId="Package\Final Row Count Logging\Rejected Rows Total Count Error Audit.Outputs[Audit Output 1].Columns[Task name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[TaskName]"
+                      dataType="wstr"
+                      length="255"
+                      name="TaskName" />
+                    <externalMetadataColumn
+                      refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="wstr"
+                      length="255"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Final Row Count Logging\Total Rows Updated"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -2848,85 +3023,85 @@
                       refId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[ID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="RedirectRow"
                       externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].ExternalColumns[ID]"
                       lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[ID]"
                       name="ID"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="RedirectRow" />
                     <outputColumn
                       refId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[UserID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="RedirectRow"
                       externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].ExternalColumns[UserID]"
                       lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[UserID]"
                       name="UserID"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="RedirectRow" />
                     <outputColumn
                       refId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[FullName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="RedirectRow"
                       externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
                       length="255"
                       lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[FullName]"
                       name="FullName"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="RedirectRow" />
                     <outputColumn
                       refId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[Age]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="RedirectRow"
                       externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].ExternalColumns[Age]"
                       lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[Age]"
                       name="Age"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="RedirectRow" />
                     <outputColumn
                       refId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[Email]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="RedirectRow"
                       externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].ExternalColumns[Email]"
                       length="255"
                       lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[Email]"
                       name="Email"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="RedirectRow" />
                     <outputColumn
                       refId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[RegistrationDate]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="RedirectRow"
                       externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].ExternalColumns[RegistrationDate]"
                       lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[RegistrationDate]"
                       name="RegistrationDate"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="RedirectRow" />
                     <outputColumn
                       refId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[LastLoginDate]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="RedirectRow"
                       externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].ExternalColumns[LastLoginDate]"
                       lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[LastLoginDate]"
                       name="LastLoginDate"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="RedirectRow" />
                     <outputColumn
                       refId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[PurchaseTotal]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="RedirectRow"
                       externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].ExternalColumns[PurchaseTotal]"
                       lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[PurchaseTotal]"
                       name="PurchaseTotal"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="RedirectRow" />
                     <outputColumn
                       refId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[RecordLastUpdated]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="RedirectRow"
                       externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].ExternalColumns[RecordLastUpdated]"
                       lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Output].Columns[RecordLastUpdated]"
                       name="RecordLastUpdated"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="RedirectRow" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3040,6 +3215,181 @@
               </outputs>
             </component>
             <component
+              refId="Package\Final Row Count Logging\Total Rows Updated Error Audit"
+              componentClassID="Microsoft.Lineage"
+              contactInfo="Audit;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Includes data about the environment in which the package runs. Map system variables to new output columns. For example, add the name of the computer and operator to the data flow."
+              name="Total Rows Updated Error Audit">
+              <inputs>
+                <input
+                  refId="Package\Final Row Count Logging\Total Rows Updated Error Audit.Inputs[Audit Input 1]"
+                  name="Audit Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Final Row Count Logging\Total Rows Updated Error Audit.Outputs[Audit Output 1]"
+                  exclusionGroup="1"
+                  name="Audit Output 1"
+                  synchronousInputId="Package\Final Row Count Logging\Total Rows Updated Error Audit.Inputs[Audit Input 1]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Final Row Count Logging\Total Rows Updated Error Audit.Outputs[Audit Output 1].Columns[Task name]"
+                      dataType="wstr"
+                      length="64"
+                      lineageId="Package\Final Row Count Logging\Total Rows Updated Error Audit.Outputs[Audit Output 1].Columns[Task name]"
+                      name="Task name">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies which audit item this column produces."
+                          name="LineageItemSelected"
+                          typeConverter="LineageItemSelected">7</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Final Row Count Logging\Total Rows Updated Error Logging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Total Rows Updated Error Logging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ErrorLog]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.KoreAssignment_{Edward_Chiu\}]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.KoreAssignment_{Edward_Chiu\}]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input].Columns[Task name]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="Task name"
+                      externalMetadataColumnId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[TaskName]"
+                      lineageId="Package\Final Row Count Logging\Total Rows Updated Error Audit.Outputs[Audit Output 1].Columns[Task name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[TaskName]"
+                      dataType="wstr"
+                      length="255"
+                      name="TaskName" />
+                    <externalMetadataColumn
+                      refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="wstr"
+                      length="255"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Final Row Count Logging\Union All"
               componentClassID="Microsoft.UnionAll"
               contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -3128,6 +3478,26 @@
               endId="Package\Final Row Count Logging\Union All.Inputs[Union All Input 2]"
               name="Aggregate Output 1"
               startId="Package\Final Row Count Logging\Count All Updated Rows.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Final Row Count Logging.Paths[Audit Output 1]"
+              endId="Package\Final Row Count Logging\Total Rows Updated Error Logging.Inputs[OLE DB Destination Input]"
+              name="Audit Output 1"
+              startId="Package\Final Row Count Logging\Total Rows Updated Error Audit.Outputs[Audit Output 1]" />
+            <path
+              refId="Package\Final Row Count Logging.Paths[Audit Output 11]"
+              endId="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging.Inputs[OLE DB Destination Input]"
+              name="Audit Output 1"
+              startId="Package\Final Row Count Logging\Rejected Rows Total Count Error Audit.Outputs[Audit Output 1]" />
+            <path
+              refId="Package\Final Row Count Logging.Paths[OLE DB Source Error Output]"
+              endId="Package\Final Row Count Logging\Rejected Rows Total Count Error Audit.Inputs[Audit Input 1]"
+              name="OLE DB Source Error Output"
+              startId="Package\Final Row Count Logging\Rejected Rows Total Count.Outputs[OLE DB Source Error Output]" />
+            <path
+              refId="Package\Final Row Count Logging.Paths[OLE DB Source Error Output1]"
+              endId="Package\Final Row Count Logging\Total Rows Updated Error Audit.Inputs[Audit Input 1]"
+              name="OLE DB Source Error Output"
+              startId="Package\Final Row Count Logging\Total Rows Updated.Outputs[OLE DB Source Error Output]" />
             <path
               refId="Package\Final Row Count Logging.Paths[OLE DB Source Output]"
               endId="Package\Final Row Count Logging\Count All Rejected Rows.Inputs[Aggregate Input 1]"
@@ -5187,206 +5557,17 @@ WHERE UserID = ?;</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="222,42"
-          Id="Package\Extract and convert data type"
-          TopLeft="155.749999999999,20.0277777777778" />
-        <NodeLayout
-          Size="234,42"
-          Id="Package\Merge Clean data to Production"
-          TopLeft="1043.36111111111,754.638888888889" />
-        <NodeLayout
-          Size="192,42"
-          Id="Package\UserID Validation\Logging Invalid UserID"
-          TopLeft="53.4444444444445,146.555555555556" />
-        <EdgeLayout
-          Id="Package\UserID Validation.PrecedenceConstraints[Constraint]"
-          TopLeft="151.083333333333,85.3888888888891">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.166666666667"
-              Start="0,0"
-              End="0,53.666666666667">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.666666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\UserID Validation.PrecedenceConstraints[Constraint 1]"
-          TopLeft="153.388888888889,188.555555555556">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,62.2777777777777"
-              Start="0,0"
-              End="0,54.7777777777777">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.7777777777777" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="201,42"
-          Id="Package\UserID Validation\Removing Invalid UserID"
-          TopLeft="56.8333333333333,250.833333333334" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\UserID Validation\Invalid UserID Row Count"
-          TopLeft="50.2222222222222,43.3888888888891" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="319,368"
-          Size="319,411"
-          Id="Package\UserID Validation"
-          TopLeft="112.222222222222,102.222222222222" />
-        <NodeLayout
-          Size="210,42"
-          Id="Package\Duplicate UserID Validation\Logging Duplicate UserIDs"
-          TopLeft="77.7777777777776,163.055555555556" />
-        <EdgeLayout
-          Id="Package\Duplicate UserID Validation.PrecedenceConstraints[Constraint 6]"
-          TopLeft="182.583333333333,65.277777777778">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,97.7777777777778"
-              Start="0,0"
-              End="0,90.2777777777778">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,90.2777777777778" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Duplicate UserID Validation.PrecedenceConstraints[Constraint]"
-          TopLeft="181.222222222222,205.055555555556">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.1388888888889"
-              Start="0,0"
-              End="0,53.6388888888889">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.6388888888889" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="220,42"
-          Id="Package\Duplicate UserID Validation\Removing Duplicate UserIDs"
-          TopLeft="69.6666666666665,266.194444444445" />
-        <NodeLayout
-          Size="219,42"
-          Id="Package\Duplicate UserID Validation\Duplicate UserID Row Count"
-          TopLeft="72.8888888888888,23.277777777778" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="335,374"
-          Size="335,417"
-          Id="Package\Duplicate UserID Validation"
-          TopLeft="511.111111111111,93.3333333333334" />
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Email Validation\Logging Invalid Email"
-          TopLeft="90.2777777777779,128.555555555556" />
-        <EdgeLayout
-          Id="Package\Email Validation.PrecedenceConstraints[Constraint 9]"
-          TopLeft="182.083333333333,45.7777777777778">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,82.7777777777786"
-              Start="0,0"
-              End="0,75.2777777777786">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,75.2777777777786" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Email Validation.PrecedenceConstraints[Constraint 7]"
-          TopLeft="180.138888888889,170.555555555556">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,86.333333333333"
-              Start="0,0"
-              End="0,78.833333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,78.833333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="185,42"
-          Id="Package\Email Validation\Deleting Invalid Email"
-          TopLeft="85.5,256.888888888889" />
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Email Validation\Invalid Email Row Count"
-          TopLeft="82.388888888889,3.77777777777783" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="339,361"
-          Size="339,404"
-          Id="Package\Email Validation"
-          TopLeft="87.7777777777779,575.555555555556" />
+          Size="170,42"
+          Id="Package\Date Validation\Execute SQL Task"
+          TopLeft="60.9444444444445,4.44444444444434" />
         <NodeLayout
           Size="281,42"
           Id="Package\Date Validation\Registration and Last Login Date Logging"
           TopLeft="10.8888888888883,107.944444444444" />
+        <NodeLayout
+          Size="290,42"
+          Id="Package\Date Validation\Registration and Last Login Date Validation"
+          TopLeft="5.5,197.027777777778" />
         <EdgeLayout
           Id="Package\Date Validation.PrecedenceConstraints[Constraint 4]"
           TopLeft="148.666666666666,46.4444444444443">
@@ -5431,14 +5612,6 @@ WHERE UserID = ?;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="290,42"
-          Id="Package\Date Validation\Registration and Last Login Date Validation"
-          TopLeft="5.5,197.027777777778" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Date Validation\Execute SQL Task"
-          TopLeft="60.9444444444445,4.44444444444434" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -5446,20 +5619,225 @@ WHERE UserID = ?;</property>
           Size="300,373"
           Id="Package\Date Validation"
           TopLeft="597.777777777778,591.111111111111" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Duplicate UserID Validation\Duplicate UserID Row Count"
+          TopLeft="72.8888888888888,23.277777777778" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Duplicate UserID Validation\Logging Duplicate UserIDs"
+          TopLeft="77.7777777777776,163.055555555556" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Duplicate UserID Validation\Removing Duplicate UserIDs"
+          TopLeft="69.6666666666665,266.194444444445" />
+        <EdgeLayout
+          Id="Package\Duplicate UserID Validation.PrecedenceConstraints[Constraint]"
+          TopLeft="181.222222222222,205.055555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.1388888888889"
+              Start="0,0"
+              End="0,53.6388888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.6388888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Duplicate UserID Validation.PrecedenceConstraints[Constraint 6]"
+          TopLeft="182.583333333333,65.277777777778">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,97.7777777777778"
+              Start="0,0"
+              End="0,90.2777777777778">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,90.2777777777778" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="335,374"
+          Size="335,417"
+          Id="Package\Duplicate UserID Validation"
+          TopLeft="511.111111111111,93.3333333333334" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Email Validation\Deleting Invalid Email"
+          TopLeft="85.5,256.888888888889" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Email Validation\Invalid Email Row Count"
+          TopLeft="82.388888888889,3.77777777777783" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Email Validation\Logging Invalid Email"
+          TopLeft="90.2777777777779,128.555555555556" />
+        <EdgeLayout
+          Id="Package\Email Validation.PrecedenceConstraints[Constraint 7]"
+          TopLeft="180.138888888889,170.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86.333333333333"
+              Start="0,0"
+              End="0,78.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Email Validation.PrecedenceConstraints[Constraint 9]"
+          TopLeft="182.083333333333,45.7777777777778">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82.7777777777786"
+              Start="0,0"
+              End="0,75.2777777777786">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.2777777777786" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="339,361"
+          Size="339,404"
+          Id="Package\Email Validation"
+          TopLeft="87.7777777777779,575.555555555556" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Extract and convert data type"
+          TopLeft="155.749999999999,20.0277777777778" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Final Row Count Logging"
+          TopLeft="1065,865" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\Merge Clean data to Production"
+          TopLeft="1043.36111111111,754.638888888889" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Truncate Staging Table"
+          TopLeft="1373.75,863.75" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\UserID Validation\Invalid UserID Row Count"
+          TopLeft="50.2222222222222,43.3888888888891" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\UserID Validation\Logging Invalid UserID"
+          TopLeft="53.4444444444445,146.555555555556" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\UserID Validation\Removing Invalid UserID"
+          TopLeft="56.8333333333333,250.833333333334" />
+        <EdgeLayout
+          Id="Package\UserID Validation.PrecedenceConstraints[Constraint]"
+          TopLeft="151.083333333333,85.3888888888891">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.166666666667"
+              Start="0,0"
+              End="0,53.666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\UserID Validation.PrecedenceConstraints[Constraint 1]"
+          TopLeft="153.388888888889,188.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.2777777777777"
+              Start="0,0"
+              End="0,54.7777777777777">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.7777777777777" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="319,368"
+          Size="319,411"
+          Id="Package\UserID Validation"
+          TopLeft="112.222222222222,102.222222222222" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="269.236111111111,62.0277777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40.1944444444445"
+              EndConnector="0,40.1944444444442"
               Start="0,0"
-              End="0,32.6944444444445">
+              End="0,32.6944444444442">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.6944444444445" />
+                    End="0,32.6944444444442" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5568,36 +5946,6 @@ WHERE UserID = ?;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="202,42"
-          Id="Package\Final Row Count Logging"
-          TopLeft="1065,865" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="1163.18055555556,796.638888888889">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,68.3611111111111"
-              Start="0,0"
-              End="0,60.8611111111111">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60.8611111111111" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="193,42"
-          Id="Package\Truncate Staging Table"
-          TopLeft="1373.75,863.75" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="1267,885.375">
@@ -5620,6 +5968,28 @@ WHERE UserID = ?;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="1163.18055555556,796.638888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68.3611111111111"
+              Start="0,0"
+              End="0,60.8611111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.8611111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -5627,78 +5997,73 @@ WHERE UserID = ?;</property>
     design-time-name="Package\Extract and convert data type">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="271,42"
+          Id="Package\Extract and convert data type\Data Conversion Load to Staging Table"
+          TopLeft="37,606" />
+        <NodeLayout
+          Size="274,42"
+          Id="Package\Extract and convert data type\Data Conversion Rejected Row Logging"
+          TopLeft="493,633" />
         <NodeLayout
           Size="163,42"
           Id="Package\Extract and convert data type\Extract CSV data"
           TopLeft="298,28" />
-        <AnnotationLayout
-          Text="First convert all &quot;blanks&quot; into nulls, then reject rows based on SQL server data types.  Rejected rows&#xD;&#xA;should not be able to be transformed&#xD;&#xA;"
-          ParentId="Package\Extract and convert data type"
-          FontInfo="{assembly:Null}"
-          Size="560,72"
-          Id="0f931322-5817-445b-bc1b-c614fd7f7323"
-          TopLeft="753,40" />
         <NodeLayout
           Size="225,42"
           Id="Package\Extract and convert data type\Replace &quot;null&quot; and &quot;&quot; as NULL"
           TopLeft="239,192" />
         <NodeLayout
-          Size="161,42"
-          Id="Package\Extract and convert data type\Data Conversion"
-          TopLeft="276,285" />
-        <EdgeLayout
-          Id="Package\Extract and convert data type.Paths[Derived Column Output]"
-          TopLeft="354,234">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51"
-              Start="0,0"
-              End="0,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="133,46"
+          Id="Package\Extract and convert data type\Row Count"
+          TopLeft="284,119" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Extract and convert data type\Rejected Data Conversion Row Count"
+          TopLeft="629,351" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Extract and convert data type\Extraction Error Logging"
+          TopLeft="1062,247" />
         <NodeLayout
           Size="258,42"
           Id="Package\Extract and convert data type\Passed Data Conversion Row Count"
           TopLeft="41,413" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Extract and convert data type\Multicast"
+          TopLeft="709,527" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Extract and convert data type\Data Conversion Error Logging"
+          TopLeft="829,631" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Extract and convert data type\Data Conversion"
+          TopLeft="276,285" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Extract and convert data type\Data Conversion Audit"
+          TopLeft="673,449" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Extract and convert data type\CSV Extract Audit"
+          TopLeft="872,156" />
         <EdgeLayout
-          Id="Package\Extract and convert data type.Paths[Data Conversion Output]"
-          TopLeft="331,327">
+          Id="Package\Extract and convert data type.Paths[Row Count Output 12]"
+          TopLeft="351,165">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-161,86"
+              EndConnector="0,27"
               Start="0,0"
-              End="-161,78.5">
+              End="0,19.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.9077490774908" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.9077490774908"
-                    Point2="0,34.9077490774908"
-                    Point3="-4,34.9077490774908" />
-                  <mssgle:LineSegment
-                    End="-157,34.9077490774908" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-157,34.9077490774908"
-                    Point2="-161,34.9077490774908"
-                    Point3="-161,38.9077490774908" />
-                  <mssgle:LineSegment
-                    End="-161,78.5" />
+                    End="0,19.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5707,10 +6072,28 @@ WHERE UserID = ?;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="271,42"
-          Id="Package\Extract and convert data type\Data Conversion Load to Staging Table"
-          TopLeft="37,606" />
+        <EdgeLayout
+          Id="Package\Extract and convert data type.Paths[Row Count Output 11]"
+          TopLeft="764.25,393">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract and convert data type.Paths[Row Count Output 1]"
           TopLeft="171.25,455">
@@ -5725,156 +6108,6 @@ WHERE UserID = ?;</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,143.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Extract and convert data type\CSV Extract Audit"
-          TopLeft="872,156" />
-        <EdgeLayout
-          Id="Package\Extract and convert data type.Paths[Flat File Source Error Output]"
-          TopLeft="405.333333333333,70">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="550.166666666667,86"
-              Start="0,0"
-              End="550.166666666667,78.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.9015795868773" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.9015795868773"
-                    Point2="0,34.9015795868773"
-                    Point3="4,34.9015795868773" />
-                  <mssgle:LineSegment
-                    End="546.166666666667,34.9015795868773" />
-                  <mssgle:CubicBezierSegment
-                    Point1="546.166666666667,34.9015795868773"
-                    Point2="550.166666666667,34.9015795868773"
-                    Point3="550.166666666667,38.9015795868773" />
-                  <mssgle:LineSegment
-                    End="550.166666666667,78.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="211.456946614583,39.9015795868773,127.2527734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="197,42"
-          Id="Package\Extract and convert data type\Extraction Error Logging"
-          TopLeft="1062,247" />
-        <EdgeLayout
-          Id="Package\Extract and convert data type.Paths[Audit Output 1]"
-          TopLeft="955.5,198">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="205,49"
-              Start="0,0"
-              End="205,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.5"
-                    Point2="0,24.5"
-                    Point3="4,24.5" />
-                  <mssgle:LineSegment
-                    End="201,24.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="201,24.5"
-                    Point2="205,24.5"
-                    Point3="205,28.5" />
-                  <mssgle:LineSegment
-                    End="205,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="189,42"
-          Id="Package\Extract and convert data type\Data Conversion Audit"
-          TopLeft="673,449" />
-        <NodeLayout
-          Size="123,42"
-          Id="Package\Extract and convert data type\Multicast"
-          TopLeft="709,527" />
-        <EdgeLayout
-          Id="Package\Extract and convert data type.Paths[Audit Output 11]"
-          TopLeft="769,491">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="274,42"
-          Id="Package\Extract and convert data type\Data Conversion Rejected Row Logging"
-          TopLeft="493,633" />
-        <NodeLayout
-          Size="230,42"
-          Id="Package\Extract and convert data type\Data Conversion Error Logging"
-          TopLeft="829,631" />
-        <EdgeLayout
-          Id="Package\Extract and convert data type.Paths[Multicast Output 1]"
-          TopLeft="751.333333333333,569">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-121.333333333333,64"
-              Start="0,0"
-              End="-121.333333333333,56.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.0930979133226" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.0930979133226"
-                    Point2="0,26.0930979133226"
-                    Point3="-4,26.0930979133226" />
-                  <mssgle:LineSegment
-                    End="-117.333333333333,26.0930979133226" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-117.333333333333,26.0930979133226"
-                    Point2="-121.333333333333,26.0930979133226"
-                    Point3="-121.333333333333,30.0930979133226" />
-                  <mssgle:LineSegment
-                    End="-121.333333333333,56.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5917,10 +6150,154 @@ WHERE UserID = ?;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="264,42"
-          Id="Package\Extract and convert data type\Rejected Data Conversion Row Count"
-          TopLeft="629,351" />
+        <EdgeLayout
+          Id="Package\Extract and convert data type.Paths[Multicast Output 1]"
+          TopLeft="751.333333333333,569">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-121.333333333333,64"
+              Start="0,0"
+              End="-121.333333333333,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.0930979133226" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.0930979133226"
+                    Point2="0,26.0930979133226"
+                    Point3="-4,26.0930979133226" />
+                  <mssgle:LineSegment
+                    End="-117.333333333333,26.0930979133226" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-117.333333333333,26.0930979133226"
+                    Point2="-121.333333333333,26.0930979133226"
+                    Point3="-121.333333333333,30.0930979133226" />
+                  <mssgle:LineSegment
+                    End="-121.333333333333,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and convert data type.Paths[Flat File Source Output]"
+          TopLeft="352.083333333333,70">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and convert data type.Paths[Flat File Source Error Output]"
+          TopLeft="405.333333333333,70">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="550.166666666667,86"
+              Start="0,0"
+              End="550.166666666667,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.9015795868773" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.9015795868773"
+                    Point2="0,34.9015795868773"
+                    Point3="4,34.9015795868773" />
+                  <mssgle:LineSegment
+                    End="546.166666666667,34.9015795868773" />
+                  <mssgle:CubicBezierSegment
+                    Point1="546.166666666667,34.9015795868773"
+                    Point2="550.166666666667,34.9015795868773"
+                    Point3="550.166666666667,38.9015795868773" />
+                  <mssgle:LineSegment
+                    End="550.166666666667,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="211.456946614583,39.9015795868773,127.2527734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and convert data type.Paths[Derived Column Output]"
+          TopLeft="354,234">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and convert data type.Paths[Data Conversion Output]"
+          TopLeft="331,327">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-161,86"
+              Start="0,0"
+              End="-161,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.9077490774908" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.9077490774908"
+                    Point2="0,34.9077490774908"
+                    Point3="-4,34.9077490774908" />
+                  <mssgle:LineSegment
+                    End="-157,34.9077490774908" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-157,34.9077490774908"
+                    Point2="-161,34.9077490774908"
+                    Point3="-161,38.9077490774908" />
+                  <mssgle:LineSegment
+                    End="-161,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract and convert data type.Paths[Data Conversion Error Output]"
           TopLeft="382,327">
@@ -5958,19 +6335,278 @@ WHERE UserID = ?;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract and convert data type.Paths[Row Count Output 11]"
-          TopLeft="764.25,393">
+          Id="Package\Extract and convert data type.Paths[Audit Output 11]"
+          TopLeft="769,491">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56"
+              EndConnector="0,36"
               Start="0,0"
-              End="0,48.5">
+              End="0,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.5" />
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract and convert data type.Paths[Audit Output 1]"
+          TopLeft="955.5,198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="205,49"
+              Start="0,0"
+              End="205,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.5"
+                    Point2="0,24.5"
+                    Point3="4,24.5" />
+                  <mssgle:LineSegment
+                    End="201,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="201,24.5"
+                    Point2="205,24.5"
+                    Point3="205,28.5" />
+                  <mssgle:LineSegment
+                    End="205,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="First convert all &quot;blanks&quot; into nulls, then reject rows based on SQL server data types.  Rejected rows&#xA;should not be able to be transformed&#xA;"
+          ParentId="Package\Extract and convert data type"
+          FontInfo="{assembly:Null}"
+          Size="560,72"
+          Id="0f931322-5817-445b-bc1b-c614fd7f7323"
+          TopLeft="753,40" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract and convert data type\Data Conversion Load to Staging Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract and convert data type\Data Conversion Rejected Row Logging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract and convert data type\Extraction Error Logging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract and convert data type\Data Conversion Error Logging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Final Row Count Logging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Final Row Count Logging\Final Row Count Log"
+          TopLeft="412,487" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Final Row Count Logging\Total Rows Updated"
+          TopLeft="640,121" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Final Row Count Logging\Rejected Rows Total Count"
+          TopLeft="239,116" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Final Row Count Logging\Union All"
+          TopLeft="438,384" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Final Row Count Logging\Count All Rejected Rows"
+          TopLeft="249,244" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Final Row Count Logging\Count All Updated Rows"
+          TopLeft="633,240" />
+        <EdgeLayout
+          Id="Package\Final Row Count Logging.Paths[OLE DB Source Output]"
+          TopLeft="347.25,158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86"
+              Start="0,0"
+              End="0,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Final Row Count Logging.Paths[Aggregate Output 11]"
+          TopLeft="732.5,282">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-213.833333333333,102"
+              Start="0,0"
+              End="-213.833333333333,94.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.414125200642" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.414125200642"
+                    Point2="0,60.414125200642"
+                    Point3="-4,60.414125200642" />
+                  <mssgle:LineSegment
+                    End="-209.833333333333,60.414125200642" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-209.833333333333,60.414125200642"
+                    Point2="-213.833333333333,60.414125200642"
+                    Point3="-213.833333333333,64.414125200642" />
+                  <mssgle:LineSegment
+                    End="-213.833333333333,94.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Final Row Count Logging.Paths[Aggregate Output 1]"
+          TopLeft="349,286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="131.333333333333,98"
+              Start="0,0"
+              End="131.333333333333,90.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.0449438202247" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,54.0449438202247"
+                    Point2="0,58.0449438202247"
+                    Point3="4,58.0449438202247" />
+                  <mssgle:LineSegment
+                    End="127.333333333333,58.0449438202247" />
+                  <mssgle:CubicBezierSegment
+                    Point1="127.333333333333,58.0449438202247"
+                    Point2="131.333333333333,58.0449438202247"
+                    Point3="131.333333333333,62.0449438202247" />
+                  <mssgle:LineSegment
+                    End="131.333333333333,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Final Row Count Logging.Paths[Union All Output 1]"
+          TopLeft="501,426">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Final Row Count Logging.Paths[OLE DB Source Output1]"
+          TopLeft="730.75,163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77"
+              Start="0,0"
+              End="0,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5980,23 +6616,119 @@ WHERE UserID = ?;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="133,46"
-          Id="Package\Extract and convert data type\Row Count"
-          TopLeft="284,119" />
+          Size="268,42"
+          Id="Package\Final Row Count Logging\Rejected Rows Total Count Error Audit"
+          TopLeft="97,199" />
         <EdgeLayout
-          Id="Package\Extract and convert data type.Paths[Flat File Source Output]"
-          TopLeft="352.083333333333,70">
+          Id="Package\Final Row Count Logging.Paths[OLE DB Source Error Output]"
+          TopLeft="311.333333333333,158">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49"
+              EndConnector="-80.3333333333333,41"
               Start="0,0"
-              End="0,41.5">
+              End="-80.3333333333333,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.5" />
+                    End="0,12.5834109972041" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5834109972041"
+                    Point2="0,16.5834109972041"
+                    Point3="-4,16.5834109972041" />
+                  <mssgle:LineSegment
+                    End="-76.3333333333333,16.5834109972041" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-76.3333333333333,16.5834109972041"
+                    Point2="-80.3333333333333,16.5834109972041"
+                    Point3="-80.3333333333333,20.5834109972041" />
+                  <mssgle:LineSegment
+                    End="-80.3333333333333,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-103.600572916667,21.5834109972041,126.8678125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="234,42"
+          Id="Package\Final Row Count Logging\Total Rows Updated Error Audit"
+          TopLeft="910,189" />
+        <EdgeLayout
+          Id="Package\Final Row Count Logging.Paths[OLE DB Source Error Output1]"
+          TopLeft="757.333333333333,163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="269.666666666667,26"
+              Start="0,0"
+              End="269.666666666667,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,6.53897550111358" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,6.53897550111358"
+                    Point2="0,10.5389755011136"
+                    Point3="4,10.5389755011136" />
+                  <mssgle:LineSegment
+                    End="265.666666666667,10.5389755011136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="265.666666666667,10.5389755011136"
+                    Point2="269.666666666667,10.5389755011136"
+                    Point3="269.666666666667,14.5389755011136" />
+                  <mssgle:LineSegment
+                    End="269.666666666667,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="71.3994270833333,15.5389755011136,126.8678125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="282,42"
+          Id="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging"
+          TopLeft="4,308" />
+        <NodeLayout
+          Size="248,42"
+          Id="Package\Final Row Count Logging\Total Rows Updated Error Logging"
+          TopLeft="1035,255" />
+        <EdgeLayout
+          Id="Package\Final Row Count Logging.Paths[Audit Output 1]"
+          TopLeft="1027,231">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="132,24"
+              Start="0,0"
+              End="132,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8"
+                    Point2="0,12"
+                    Point3="4,12" />
+                  <mssgle:LineSegment
+                    End="128,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="128,12"
+                    Point2="132,12"
+                    Point3="132,16" />
+                  <mssgle:LineSegment
+                    End="132,16.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6006,19 +6738,31 @@ WHERE UserID = ?;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract and convert data type.Paths[Row Count Output 12]"
-          TopLeft="351,165">
+          Id="Package\Final Row Count Logging.Paths[Audit Output 11]"
+          TopLeft="231,241">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,27"
+              EndConnector="-86,67"
               Start="0,0"
-              End="0,19.5">
+              End="-86,59.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.5" />
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="-4,33.5" />
+                  <mssgle:LineSegment
+                    End="-82,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82,33.5"
+                    Point2="-86,33.5"
+                    Point3="-86,37.5" />
+                  <mssgle:LineSegment
+                    End="-86,59.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6031,7 +6775,33 @@ WHERE UserID = ?;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Extract and convert data type\Data Conversion Load to Staging Table">
+    design-time-name="Package\Final Row Count Logging\Final Row Count Log">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Final Row Count Logging\Total Rows Updated">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Final Row Count Logging\Rejected Rows Total Count">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6580,95 +7350,20 @@ WHERE UserID = ?;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Merge Clean data to Production\Load New Data Error Logging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Merge Clean data to Production\Cleaned Staging table source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Merge Clean data to Production\Staging and Production Table comparison">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[prod].[Users]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Merge Clean data to Production\Load New Data to Production Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract and convert data type\Extraction Error Logging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract and convert data type\Data Conversion Rejected Row Logging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract and convert data type\Data Conversion Error Logging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Merge Clean data to Production\Clean Data Extraction Error Logging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6694,7 +7389,7 @@ WHERE UserID = ?;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Merge Clean data to Production\LastLoginDate Comparison Error Logging">
+    design-time-name="Package\Merge Clean data to Production\Load New Data to Production Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6707,7 +7402,30 @@ WHERE UserID = ?;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Merge Clean data to Production\Load New Data Error Logging">
+    design-time-name="Package\Merge Clean data to Production\Staging and Production Table comparison">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[prod].[Users]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Merge Clean data to Production\Clean Data Extraction Error Logging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6732,198 +7450,8 @@ WHERE UserID = ?;</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Final Row Count Logging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="213,42"
-          Id="Package\Final Row Count Logging\Rejected Rows Total Count"
-          TopLeft="212,116" />
-        <NodeLayout
-          Size="200,42"
-          Id="Package\Final Row Count Logging\Count All Rejected Rows"
-          TopLeft="259,240" />
-        <EdgeLayout
-          Id="Package\Final Row Count Logging.Paths[OLE DB Source Output]"
-          TopLeft="318.5,158">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="40.5,82"
-              Start="0,0"
-              End="40.5,74.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37"
-                    Point2="0,41"
-                    Point3="4,41" />
-                  <mssgle:LineSegment
-                    End="36.5,41" />
-                  <mssgle:CubicBezierSegment
-                    Point1="36.5,41"
-                    Point2="40.5,41"
-                    Point3="40.5,45" />
-                  <mssgle:LineSegment
-                    End="40.5,74.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="178,42"
-          Id="Package\Final Row Count Logging\Total Rows Updated"
-          TopLeft="637,121" />
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Final Row Count Logging\Count All Updated Rows"
-          TopLeft="661,250" />
-        <EdgeLayout
-          Id="Package\Final Row Count Logging.Paths[OLE DB Source Output1]"
-          TopLeft="726,163">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="34.5,87"
-              Start="0,0"
-              End="34.5,79.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,39.5"
-                    Point2="0,43.5"
-                    Point3="4,43.5" />
-                  <mssgle:LineSegment
-                    End="30.5,43.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="30.5,43.5"
-                    Point2="34.5,43.5"
-                    Point3="34.5,47.5" />
-                  <mssgle:LineSegment
-                    End="34.5,79.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="123,42"
-          Id="Package\Final Row Count Logging\Union All"
-          TopLeft="435,384" />
-        <EdgeLayout
-          Id="Package\Final Row Count Logging.Paths[Aggregate Output 1]"
-          TopLeft="359,282">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="118.333333333333,102"
-              Start="0,0"
-              End="118.333333333333,94.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.4141252006421" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.4141252006421"
-                    Point2="0,60.4141252006421"
-                    Point3="4,60.4141252006421" />
-                  <mssgle:LineSegment
-                    End="114.333333333333,60.4141252006421" />
-                  <mssgle:CubicBezierSegment
-                    Point1="114.333333333333,60.4141252006421"
-                    Point2="118.333333333333,60.4141252006421"
-                    Point3="118.333333333333,64.4141252006421" />
-                  <mssgle:LineSegment
-                    End="118.333333333333,94.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Final Row Count Logging.Paths[Aggregate Output 11]"
-          TopLeft="760.5,292">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-244.833333333333,92"
-              Start="0,0"
-              End="-244.833333333333,84.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.4911717495987" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,50.4911717495987"
-                    Point2="0,54.4911717495987"
-                    Point3="-4,54.4911717495987" />
-                  <mssgle:LineSegment
-                    End="-240.833333333333,54.4911717495987" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-240.833333333333,54.4911717495987"
-                    Point2="-244.833333333333,54.4911717495987"
-                    Point3="-244.833333333333,58.4911717495987" />
-                  <mssgle:LineSegment
-                    End="-244.833333333333,84.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="181,42"
-          Id="Package\Final Row Count Logging\Final Row Count Log"
-          TopLeft="407,500" />
-        <EdgeLayout
-          Id="Package\Final Row Count Logging.Paths[Union All Output 1]"
-          TopLeft="497,426">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,74"
-              Start="0,0"
-              End="0,66.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,66.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Final Row Count Logging\Rejected Rows Total Count">
+    design-time-name="Package\Merge Clean data to Production\LastLoginDate Comparison Error Logging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6936,7 +7464,7 @@ WHERE UserID = ?;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Final Row Count Logging\Total Rows Updated">
+    design-time-name="Package\Final Row Count Logging\Rejected Rows Total Count Error Logging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6949,7 +7477,7 @@ WHERE UserID = ?;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Final Row Count Logging\Final Row Count Log">
+    design-time-name="Package\Final Row Count Logging\Total Rows Updated Error Logging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
