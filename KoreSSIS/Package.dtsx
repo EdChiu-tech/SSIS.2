@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="228"
-  DTS:VersionGUID="{6F05C792-DD7E-4BA4-A47B-13E9F43F4C6F}">
+  DTS:VersionBuild="240"
+  DTS:VersionGUID="{55D48502-96F2-481D-999A-EA0F61E420D6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -324,13 +324,13 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Date Validation\Execute SQL Task"
+          DTS:refId="Package\Date Validation\Invalid Date Row Count"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{43D3C08E-4043-4D7D-9DA3-934B9E330159}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Execute SQL Task"
+          DTS:ObjectName="Invalid Date Row Count"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
@@ -403,7 +403,7 @@
           DTS:refId="Package\Date Validation.PrecedenceConstraints[Constraint 4]"
           DTS:CreationName=""
           DTS:DTSID="{03E46574-539D-41E8-BF9D-BC133F806A7D}"
-          DTS:From="Package\Date Validation\Execute SQL Task"
+          DTS:From="Package\Date Validation\Invalid Date Row Count"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 4"
           DTS:To="Package\Date Validation\Registration and Last Login Date Logging" />
@@ -441,7 +441,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{DB712BAE-4FBA-479E-88E0-CA36374D4141}"
-              SQLTask:SqlStatementSource="SELECT COUNT (*) AS RemoveDupeUserIDRowCountFail&#xA;FROM stg.Users&#xA;WHERE StgID NOT IN (&#xA;&#x9;SELECT StgID&#xA;&#x9;FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;StgID,&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY UserID ORDER BY&#xA;&#x9;&#x9;&#x9;&#x9;GREATEST(COALESCE(RegistrationDate, '1900-01-01'), COALESCE(LastLoginDate, '1900-01-01')) DESC) AS rn&#xA;&#x9;&#x9;&#x9;FROM stg.Users&#xA;&#x9;&#x9;&#x9;WHERE (RegistrationDate IS NULL AND LastLoginDate IS NOT NULL) OR &#xA;&#x9;&#x9;&#x9;(RegistrationDate IS NOT NULL AND LastLoginDate IS NULL) OR &#xA;&#x9;&#x9;&#x9;COALESCE(LastLoginDate, '1900-01-01') &gt;= COALESCE(RegistrationDate, '1900-01-01')&#xA;&#x9;&#x9;) AS MostRecentUser&#xA;&#x9;WHERE rn = 1&#xA;);"
+              SQLTask:SqlStatementSource="SELECT COUNT (*) AS RemoveDupeUserIDRowCountFail&#xA;FROM stg.Users&#xA;WHERE StgID NOT IN (&#xA;&#x9;SELECT StgID&#xA;&#x9;FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;StgID,&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY UserID ORDER BY&#xA;&#x9;&#x9;&#x9;&#x9;GREATEST(COALESCE(RegistrationDate, '1900-01-01'), COALESCE(LastLoginDate, '1900-01-01')) DESC) AS rn&#xA;&#x9;&#x9;&#x9;FROM stg.Users&#xA;&#x9;&#x9;&#x9;WHERE (RegistrationDate IS NULL AND LastLoginDate IS NOT NULL) OR &#xA;&#x9;&#x9;&#x9;(RegistrationDate IS NOT NULL AND LastLoginDate IS NULL) OR &#xA;&#x9;&#x9;&#x9;COALESCE(LastLoginDate, '1900-01-01') &gt; COALESCE(RegistrationDate, '1900-01-01')&#xA;&#x9;&#x9;) AS MostRecentUser&#xA;&#x9;WHERE rn = 1&#xA;);"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="RemoveDupeUserIDRowCountFail"
@@ -463,7 +463,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{DB712BAE-4FBA-479E-88E0-CA36374D4141}"
-              SQLTask:SqlStatementSource="INSERT INTO RejectedRows (&#xA;UserID,&#xA;FullName,&#xA;Age,&#xA;Email,&#xA;RegistrationDate, &#xA;LastLoginDate,&#xA;PurchaseTotal,&#xA;TaskName,&#xA;RowsRejected&#xA;)&#xA;SELECT UserID,&#xA;FullName,&#xA;Age,&#xA;Email,&#xA;RegistrationDate, &#xA;LastLoginDate,&#xA;PurchaseTotal,&#xA;?,&#xA;?&#xA;FROM stg.Users&#xA;WHERE StgID NOT IN (&#xA;&#x9;SELECT StgID&#xA;&#x9;FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;StgID,&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY UserID ORDER BY&#xA;&#x9;&#x9;&#x9;&#x9;GREATEST(COALESCE(RegistrationDate, '1900-01-01'), COALESCE(LastLoginDate, '1900-01-01')) DESC) AS rn&#xA;&#x9;&#x9;&#x9;FROM stg.Users&#xA;&#x9;&#x9;&#x9;WHERE (RegistrationDate IS NULL AND LastLoginDate IS NOT NULL) OR &#xA;&#x9;&#x9;&#x9;(RegistrationDate IS NOT NULL AND LastLoginDate IS NULL) OR &#xA;&#x9;&#x9;&#x9;COALESCE(LastLoginDate, '1900-01-01') &gt;= COALESCE(RegistrationDate, '1900-01-01')&#xA;&#x9;&#x9;) AS MostRecentUser&#xA;&#x9;WHERE rn = 1&#xA;);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="INSERT INTO RejectedRows (&#xA;UserID,&#xA;FullName,&#xA;Age,&#xA;Email,&#xA;RegistrationDate, &#xA;LastLoginDate,&#xA;PurchaseTotal,&#xA;TaskName,&#xA;RowsRejected&#xA;)&#xA;SELECT UserID,&#xA;FullName,&#xA;Age,&#xA;Email,&#xA;RegistrationDate, &#xA;LastLoginDate,&#xA;PurchaseTotal,&#xA;?,&#xA;?&#xA;FROM stg.Users&#xA;WHERE StgID NOT IN (&#xA;&#x9;SELECT StgID&#xA;&#x9;FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;StgID,&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY UserID ORDER BY&#xA;&#x9;&#x9;&#x9;&#x9;GREATEST(COALESCE(RegistrationDate, '1900-01-01'), COALESCE(LastLoginDate, '1900-01-01')) DESC) AS rn&#xA;&#x9;&#x9;&#x9;FROM stg.Users&#xA;&#x9;&#x9;&#x9;WHERE (RegistrationDate IS NULL AND LastLoginDate IS NOT NULL) OR &#xA;&#x9;&#x9;&#x9;(RegistrationDate IS NOT NULL AND LastLoginDate IS NULL) OR &#xA;&#x9;&#x9;&#x9;COALESCE(LastLoginDate, '1900-01-01') &gt; COALESCE(RegistrationDate, '1900-01-01')&#xA;&#x9;&#x9;) AS MostRecentUser&#xA;&#x9;WHERE rn = 1&#xA;);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="System::TaskName"
@@ -493,7 +493,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{DB712BAE-4FBA-479E-88E0-CA36374D4141}"
-              SQLTask:SqlStatementSource="DELETE FROM stg.Users&#xA;WHERE StgID NOT IN (&#xA;&#x9;SELECT StgID&#xA;&#x9;FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;StgID,&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY UserID ORDER BY&#xA;&#x9;&#x9;&#x9;&#x9;GREATEST(COALESCE(RegistrationDate, '1900-01-01'), COALESCE(LastLoginDate, '1900-01-01')) DESC) AS rn&#xA;&#x9;&#x9;&#x9;FROM stg.Users&#xA;&#x9;&#x9;&#x9;WHERE (RegistrationDate IS NULL AND LastLoginDate IS NOT NULL) OR &#xA;&#x9;&#x9;&#x9;(RegistrationDate IS NOT NULL AND LastLoginDate IS NULL) OR &#xA;&#x9;&#x9;&#x9;COALESCE(LastLoginDate, '1900-01-01') &gt;= COALESCE(RegistrationDate, '1900-01-01')&#xA;&#x9;&#x9;) AS MostRecentUser&#xA;&#x9;WHERE rn = 1&#xA;);&#xA;&#xA;SELECT COUNT(*) AS RemoveDupeUserIDRowCountPass&#xA;FROM stg.Users;"
+              SQLTask:SqlStatementSource="DELETE FROM stg.Users&#xA;WHERE StgID NOT IN (&#xA;&#x9;SELECT StgID&#xA;&#x9;FROM (&#xA;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;StgID,&#xA;&#x9;&#x9;&#x9;ROW_NUMBER() OVER (PARTITION BY UserID ORDER BY&#xA;&#x9;&#x9;&#x9;&#x9;GREATEST(COALESCE(RegistrationDate, '1900-01-01'), COALESCE(LastLoginDate, '1900-01-01')) DESC) AS rn&#xA;&#x9;&#x9;&#x9;FROM stg.Users&#xA;&#x9;&#x9;&#x9;WHERE (RegistrationDate IS NULL AND LastLoginDate IS NOT NULL) OR &#xA;&#x9;&#x9;&#x9;(RegistrationDate IS NOT NULL AND LastLoginDate IS NULL) OR &#xA;&#x9;&#x9;&#x9;COALESCE(LastLoginDate, '1900-01-01') &gt; COALESCE(RegistrationDate, '1900-01-01')&#xA;&#x9;&#x9;) AS MostRecentUser&#xA;&#x9;WHERE rn = 1&#xA;);&#xA;&#xA;SELECT COUNT(*) AS RemoveDupeUserIDRowCountPass&#xA;FROM stg.Users;"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="RemoveDupeUserIDRowCountPass"
@@ -5557,8 +5557,8 @@ WHERE UserID = ?;</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="170,42"
-          Id="Package\Date Validation\Execute SQL Task"
+          Size="194,42"
+          Id="Package\Date Validation\Invalid Date Row Count"
           TopLeft="60.9444444444445,4.44444444444434" />
         <NodeLayout
           Size="281,42"
@@ -5570,18 +5570,18 @@ WHERE UserID = ?;</property>
           TopLeft="5.5,197.027777777778" />
         <EdgeLayout
           Id="Package\Date Validation.PrecedenceConstraints[Constraint 4]"
-          TopLeft="148.666666666666,46.4444444444443">
+          TopLeft="154.666666666666,46.4444444444443">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,61.4999999999999"
+              EndConnector="0,61.4999999999997"
               Start="0,0"
-              End="0,53.9999999999999">
+              End="0,53.9999999999997">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.9999999999999" />
+                    End="0,53.9999999999997" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5741,8 +5741,8 @@ WHERE UserID = ?;</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="339,361"
-          Size="339,404"
+          PanelSize="339,357"
+          Size="339,400"
           Id="Package\Email Validation"
           TopLeft="87.7777777777779,575.555555555556" />
         <NodeLayout
@@ -5852,14 +5852,14 @@ WHERE UserID = ?;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="79.8888888888883,0"
+              EndConnector="79.888888888889,0"
               Start="0,0"
-              End="72.3888888888883,0">
+              End="72.388888888889,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="72.3888888888883,0" />
+                    End="72.388888888889,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5874,26 +5874,26 @@ WHERE UserID = ?;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-421.333333333333,65.2222222222221"
+              EndConnector="-421.333333333333,65.2222222222226"
               Start="0,0"
-              End="-421.333333333333,57.7222222222221">
+              End="-421.333333333333,57.7222222222226">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.6111111111111" />
+                    End="0,28.6111111111113" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.6111111111111"
-                    Point2="0,32.6111111111111"
-                    Point3="-4,32.6111111111111" />
+                    Point1="0,28.6111111111113"
+                    Point2="0,32.6111111111113"
+                    Point3="-4,32.6111111111113" />
                   <mssgle:LineSegment
-                    End="-417.333333333333,32.6111111111111" />
+                    End="-417.333333333333,32.6111111111113" />
                   <mssgle:CubicBezierSegment
-                    Point1="-417.333333333333,32.6111111111111"
-                    Point2="-421.333333333333,32.6111111111111"
-                    Point3="-421.333333333333,36.6111111111111" />
+                    Point1="-417.333333333333,32.6111111111113"
+                    Point2="-421.333333333333,32.6111111111113"
+                    Point3="-421.333333333333,36.6111111111113" />
                   <mssgle:LineSegment
-                    End="-421.333333333333,57.7222222222221" />
+                    End="-421.333333333333,57.7222222222226" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5904,7 +5904,7 @@ WHERE UserID = ?;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="426.777777777778,777.583333333333">
+          TopLeft="426.777777777778,776.583333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5930,14 +5930,14 @@ WHERE UserID = ?;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="145.583333333333,0"
+              EndConnector="145.583333333332,0"
               Start="0,0"
-              End="138.083333333333,0">
+              End="138.083333333332,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="138.083333333333,0" />
+                    End="138.083333333332,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5970,18 +5970,18 @@ WHERE UserID = ?;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="1163.18055555556,796.638888888889">
+          TopLeft="1163.18055555555,796.638888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,68.3611111111111"
+              EndConnector="0,68.361111111111"
               Start="0,0"
-              End="0,60.8611111111111">
+              End="0,60.861111111111">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,60.8611111111111" />
+                    End="0,60.861111111111" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6476,25 +6476,25 @@ WHERE UserID = ?;</property>
         <NodeLayout
           Size="200,42"
           Id="Package\Final Row Count Logging\Count All Rejected Rows"
-          TopLeft="249,244" />
+          TopLeft="278,257" />
         <NodeLayout
           Size="199,42"
           Id="Package\Final Row Count Logging\Count All Updated Rows"
           TopLeft="633,240" />
         <EdgeLayout
           Id="Package\Final Row Count Logging.Paths[OLE DB Source Output]"
-          TopLeft="347.25,158">
+          TopLeft="378.833333333333,158">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,86"
+              EndConnector="0,99"
               Start="0,0"
-              End="0,78.5">
+              End="0,91.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,78.5" />
+                    End="0,91.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6539,30 +6539,30 @@ WHERE UserID = ?;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Final Row Count Logging.Paths[Aggregate Output 1]"
-          TopLeft="349,286">
+          TopLeft="378,299">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="131.333333333333,98"
+              EndConnector="102.333333333333,85"
               Start="0,0"
-              End="131.333333333333,90.5">
+              End="102.333333333333,77.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.0449438202247" />
+                    End="0,46.3451043338684" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,54.0449438202247"
-                    Point2="0,58.0449438202247"
-                    Point3="4,58.0449438202247" />
+                    Point1="0,46.3451043338684"
+                    Point2="0,50.3451043338684"
+                    Point3="4,50.3451043338684" />
                   <mssgle:LineSegment
-                    End="127.333333333333,58.0449438202247" />
+                    End="98.3333333333333,50.3451043338684" />
                   <mssgle:CubicBezierSegment
-                    Point1="127.333333333333,58.0449438202247"
-                    Point2="131.333333333333,58.0449438202247"
-                    Point3="131.333333333333,62.0449438202247" />
+                    Point1="98.3333333333333,50.3451043338684"
+                    Point2="102.333333333333,50.3451043338684"
+                    Point3="102.333333333333,54.3451043338684" />
                   <mssgle:LineSegment
-                    End="131.333333333333,90.5" />
+                    End="102.333333333333,77.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6819,13 +6819,65 @@ WHERE UserID = ?;</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="224,42"
+          Id="Package\Merge Clean data to Production\Load New Data Error Logging"
+          TopLeft="386,709" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Merge Clean data to Production\Update Existing Record Audit"
+          TopLeft="851,691" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Merge Clean data to Production\LastLoginDate Comparison Audit"
+          TopLeft="819,456" />
+        <NodeLayout
           Size="223,42"
           Id="Package\Merge Clean data to Production\Cleaned Staging table source"
           TopLeft="175,135" />
         <NodeLayout
+          Size="218,42"
+          Id="Package\Merge Clean data to Production\LastLonginDate Comparison"
+          TopLeft="365,453" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Merge Clean data to Production\Lookup Comparison Error Logging"
+          TopLeft="705,382" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Merge Clean data to Production\Load New Data to Production Table"
+          TopLeft="37,454" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Merge Clean data to Production\Update Existing Record"
+          TopLeft="614,591" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Merge Clean data to Production\Lookup Comparison Audit"
+          TopLeft="547,314" />
+        <NodeLayout
           Size="284,42"
           Id="Package\Merge Clean data to Production\Staging and Production Table comparison"
           TopLeft="106,243" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Merge Clean data to Production\New Data Audit"
+          TopLeft="24,563" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\Merge Clean data to Production\Clean Data Extraction Error Logging"
+          TopLeft="828,305" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Merge Clean data to Production\Clean Data Extraction Audit"
+          TopLeft="625,226" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Merge Clean data to Production\Update Existing Record Error Logging"
+          TopLeft="1154,798" />
+        <NodeLayout
+          Size="282,42"
+          Id="Package\Merge Clean data to Production\LastLoginDate Comparison Error Logging"
+          TopLeft="1074,550" />
         <EdgeLayout
           Id="Package\Merge Clean data to Production.Paths[OLE DB Source Output]"
           TopLeft="249.333333333333,177">
@@ -6848,130 +6900,6 @@ WHERE UserID = ?;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="253,42"
-          Id="Package\Merge Clean data to Production\Load New Data to Production Table"
-          TopLeft="37,454" />
-        <EdgeLayout
-          Id="Package\Merge Clean data to Production.Paths[Lookup No Match Output]"
-          TopLeft="179,285">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-15.5,169"
-              Start="0,0"
-              End="-15.5,161.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.3813953488372" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,53.3813953488372"
-                    Point2="0,57.3813953488372"
-                    Point3="-4,57.3813953488372" />
-                  <mssgle:LineSegment
-                    End="-11.5,57.3813953488372" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-11.5,57.3813953488372"
-                    Point2="-15.5,57.3813953488372"
-                    Point3="-15.5,61.3813953488372" />
-                  <mssgle:LineSegment
-                    End="-15.5,161.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-63.55638671875,62.3813953488372,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="194,42"
-          Id="Package\Merge Clean data to Production\Update Existing Record"
-          TopLeft="614,591" />
-        <NodeLayout
-          Size="218,42"
-          Id="Package\Merge Clean data to Production\LastLonginDate Comparison"
-          TopLeft="365,453" />
-        <EdgeLayout
-          Id="Package\Merge Clean data to Production.Paths[Lookup Match Output]"
-          TopLeft="248,285">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="226,168"
-              Start="0,0"
-              End="226,160.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,80" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,80"
-                    Point2="0,84"
-                    Point3="4,84" />
-                  <mssgle:LineSegment
-                    End="222,84" />
-                  <mssgle:CubicBezierSegment
-                    Point1="222,84"
-                    Point2="226,84"
-                    Point3="226,88" />
-                  <mssgle:LineSegment
-                    End="226,160.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="64.80861328125,89,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Merge Clean data to Production.Paths[stgLLDatetoProdLLDateCheck]"
-          TopLeft="474,495">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="237,96"
-              Start="0,0"
-              End="237,88.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,44"
-                    Point2="0,48"
-                    Point3="4,48" />
-                  <mssgle:LineSegment
-                    End="233,48" />
-                  <mssgle:CubicBezierSegment
-                    Point1="233,48"
-                    Point2="237,48"
-                    Point3="237,52" />
-                  <mssgle:LineSegment
-                    End="237,88.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="52.66580078125,53,131.6683984375,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Merge Clean data to Production\Clean Data Extraction Audit"
-          TopLeft="625,226" />
         <EdgeLayout
           Id="Package\Merge Clean data to Production.Paths[OLE DB Source Error Output]"
           TopLeft="322.333333333333,177">
@@ -7008,96 +6936,6 @@ WHERE UserID = ?;</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="255,42"
-          Id="Package\Merge Clean data to Production\Clean Data Extraction Error Logging"
-          TopLeft="828,305" />
-        <EdgeLayout
-          Id="Package\Merge Clean data to Production.Paths[Audit Output 1]"
-          TopLeft="732,268">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="223.5,37"
-              Start="0,0"
-              End="223.5,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.5"
-                    Point2="0,18.5"
-                    Point3="4,18.5" />
-                  <mssgle:LineSegment
-                    End="219.5,18.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="219.5,18.5"
-                    Point2="223.5,18.5"
-                    Point3="223.5,22.5" />
-                  <mssgle:LineSegment
-                    End="223.5,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Merge Clean data to Production\Lookup Comparison Audit"
-          TopLeft="547,314" />
-        <EdgeLayout
-          Id="Package\Merge Clean data to Production.Paths[Lookup Error Output]"
-          TopLeft="317,285">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="332.5,29"
-              Start="0,0"
-              End="332.5,21.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,5.84651162790698" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,5.84651162790698"
-                    Point2="0,9.84651162790698"
-                    Point3="4,9.84651162790698" />
-                  <mssgle:LineSegment
-                    End="328.5,9.84651162790698" />
-                  <mssgle:CubicBezierSegment
-                    Point1="328.5,9.84651162790698"
-                    Point2="332.5,9.84651162790698"
-                    Point3="332.5,13.846511627907" />
-                  <mssgle:LineSegment
-                    End="332.5,21.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="120.38361328125,14.846511627907,91.7327734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Merge Clean data to Production\New Data Audit"
-          TopLeft="24,563" />
-        <NodeLayout
-          Size="240,42"
-          Id="Package\Merge Clean data to Production\LastLoginDate Comparison Audit"
-          TopLeft="819,456" />
-        <NodeLayout
-          Size="222,42"
-          Id="Package\Merge Clean data to Production\Update Existing Record Audit"
-          TopLeft="851,691" />
         <EdgeLayout
           Id="Package\Merge Clean data to Production.Paths[OLE DB Destination Error Output]"
           TopLeft="163.5,496">
@@ -7131,30 +6969,6 @@ WHERE UserID = ?;</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-104.20890625,38.5,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Merge Clean data to Production.Paths[Conditional Split Error Output]"
-          TopLeft="583,475.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="236,0"
-              Start="0,0"
-              End="228.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="228.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="48.55609375,5,131.3878125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7194,82 +7008,164 @@ WHERE UserID = ?;</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="247,42"
-          Id="Package\Merge Clean data to Production\Lookup Comparison Error Logging"
-          TopLeft="705,382" />
-        <NodeLayout
-          Size="282,42"
-          Id="Package\Merge Clean data to Production\LastLoginDate Comparison Error Logging"
-          TopLeft="1074,550" />
-        <NodeLayout
-          Size="224,42"
-          Id="Package\Merge Clean data to Production\Load New Data Error Logging"
-          TopLeft="386,709" />
-        <NodeLayout
-          Size="264,42"
-          Id="Package\Merge Clean data to Production\Update Existing Record Error Logging"
-          TopLeft="1154,798" />
         <EdgeLayout
-          Id="Package\Merge Clean data to Production.Paths[Audit Output 11]"
-          TopLeft="649.5,356">
+          Id="Package\Merge Clean data to Production.Paths[Lookup No Match Output]"
+          TopLeft="179,285">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="179,26"
+              EndConnector="-15.5,169"
               Start="0,0"
-              End="179,18.5">
+              End="-15.5,161.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9" />
+                    End="0,53.3813953488372" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9"
-                    Point2="0,13"
-                    Point3="4,13" />
+                    Point1="0,53.3813953488372"
+                    Point2="0,57.3813953488372"
+                    Point3="-4,57.3813953488372" />
                   <mssgle:LineSegment
-                    End="175,13" />
+                    End="-11.5,57.3813953488372" />
                   <mssgle:CubicBezierSegment
-                    Point1="175,13"
-                    Point2="179,13"
-                    Point3="179,17" />
+                    Point1="-11.5,57.3813953488372"
+                    Point2="-15.5,57.3813953488372"
+                    Point3="-15.5,61.3813953488372" />
                   <mssgle:LineSegment
-                    End="179,18.5" />
+                    End="-15.5,161.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-63.55638671875,62.3813953488372,111.6127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Merge Clean data to Production.Paths[Audit Output 12]"
-          TopLeft="101.5,605">
+          Id="Package\Merge Clean data to Production.Paths[Lookup Match Output]"
+          TopLeft="248,285">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="396.5,104"
+              EndConnector="226,168"
               Start="0,0"
-              End="396.5,96.5">
+              End="226,160.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48" />
+                    End="0,80" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,48"
-                    Point2="0,52"
-                    Point3="4,52" />
+                    Point1="0,80"
+                    Point2="0,84"
+                    Point3="4,84" />
                   <mssgle:LineSegment
-                    End="392.5,52" />
+                    End="222,84" />
                   <mssgle:CubicBezierSegment
-                    Point1="392.5,52"
-                    Point2="396.5,52"
-                    Point3="396.5,56" />
+                    Point1="222,84"
+                    Point2="226,84"
+                    Point3="226,88" />
                   <mssgle:LineSegment
-                    End="396.5,96.5" />
+                    End="226,160.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="64.80861328125,89,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Merge Clean data to Production.Paths[Lookup Error Output]"
+          TopLeft="317,285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="332.5,29"
+              Start="0,0"
+              End="332.5,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,5.84651162790698" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,5.84651162790698"
+                    Point2="0,9.84651162790698"
+                    Point3="4,9.84651162790698" />
+                  <mssgle:LineSegment
+                    End="328.5,9.84651162790698" />
+                  <mssgle:CubicBezierSegment
+                    Point1="328.5,9.84651162790698"
+                    Point2="332.5,9.84651162790698"
+                    Point3="332.5,13.846511627907" />
+                  <mssgle:LineSegment
+                    End="332.5,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="120.38361328125,14.846511627907,91.7327734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Merge Clean data to Production.Paths[Conditional Split Error Output]"
+          TopLeft="583,475.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="236,0"
+              Start="0,0"
+              End="228.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="228.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="48.55609375,5,131.3878125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Merge Clean data to Production.Paths[Audit Output 14]"
+          TopLeft="939,498">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="276,52"
+              Start="0,0"
+              End="276,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
+                  <mssgle:LineSegment
+                    End="272,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="272,26"
+                    Point2="276,26"
+                    Point3="276,30" />
+                  <mssgle:LineSegment
+                    End="276,44.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7313,37 +7209,141 @@ WHERE UserID = ?;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Merge Clean data to Production.Paths[Audit Output 14]"
-          TopLeft="939,498">
+          Id="Package\Merge Clean data to Production.Paths[Audit Output 12]"
+          TopLeft="101.5,605">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="276,52"
+              EndConnector="396.5,104"
               Start="0,0"
-              End="276,44.5">
+              End="396.5,96.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22" />
+                    End="0,48" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22"
-                    Point2="0,26"
-                    Point3="4,26" />
+                    Point1="0,48"
+                    Point2="0,52"
+                    Point3="4,52" />
                   <mssgle:LineSegment
-                    End="272,26" />
+                    End="392.5,52" />
                   <mssgle:CubicBezierSegment
-                    Point1="272,26"
-                    Point2="276,26"
-                    Point3="276,30" />
+                    Point1="392.5,52"
+                    Point2="396.5,52"
+                    Point3="396.5,56" />
                   <mssgle:LineSegment
-                    End="276,44.5" />
+                    End="396.5,96.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Merge Clean data to Production.Paths[Audit Output 11]"
+          TopLeft="649.5,356">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179,26"
+              Start="0,0"
+              End="179,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9"
+                    Point2="0,13"
+                    Point3="4,13" />
+                  <mssgle:LineSegment
+                    End="175,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175,13"
+                    Point2="179,13"
+                    Point3="179,17" />
+                  <mssgle:LineSegment
+                    End="179,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Merge Clean data to Production.Paths[Audit Output 1]"
+          TopLeft="732,268">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="223.5,37"
+              Start="0,0"
+              End="223.5,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="4,18.5" />
+                  <mssgle:LineSegment
+                    End="219.5,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="219.5,18.5"
+                    Point2="223.5,18.5"
+                    Point3="223.5,22.5" />
+                  <mssgle:LineSegment
+                    End="223.5,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Merge Clean data to Production.Paths[stgLLDatetoProdLLDateCheck]"
+          TopLeft="474,495">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="237,96"
+              Start="0,0"
+              End="237,88.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44"
+                    Point2="0,48"
+                    Point3="4,48" />
+                  <mssgle:LineSegment
+                    End="233,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="233,48"
+                    Point2="237,48"
+                    Point3="237,52" />
+                  <mssgle:LineSegment
+                    End="237,88.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="52.66580078125,53,131.6683984375,11.6630859375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
